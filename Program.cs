@@ -28,15 +28,13 @@ namespace ConsoleApp1
             Console.Read();
             //Builder
             PenFactory Penfact = new PenFactory();
-            PenBuilder builder1 = new IronSwordBuilder();
+            PenBuilder builder1 = new defaultRedBuilder();
             Pen defaultRed = Penfact.Craft(builder1);
             Console.WriteLine($"Ручка создана. Материал: {defaultRed.Material.material}, цвет: {defaultRed.InkColor.color}, Тип механизма: {defaultRed.Type.type}");
-            PenBuilder builder2 = new SilverSwordBuilder();
+            PenBuilder builder2 = new premiumBlackBuilder();
             Pen premiumBlack = Penfact.Craft(builder2);
             Console.WriteLine($"Ручка создана. Материал: {premiumBlack.Material.material}, цвет: {premiumBlack.InkColor.color}, Тип механизма: {premiumBlack.Type.type}");
             Console.ReadLine();
-
-            Console.Read();
         }
     }
     //Синглтон
@@ -147,7 +145,7 @@ namespace ConsoleApp1
             return swordBuilder.Pen;
         }
     }
-    class IronSwordBuilder : PenBuilder
+    class defaultRedBuilder : PenBuilder
     {
         public override void SetMaterial()
         {
@@ -162,7 +160,7 @@ namespace ConsoleApp1
             this.Pen.Type = new Type { type = "кнопочная" };
         }
     }
-    class SilverSwordBuilder : PenBuilder
+    class premiumBlackBuilder : PenBuilder
     {
         public override void SetMaterial()
         {
